@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -36,6 +36,15 @@ const Login = () => {
       alert(res.message);
     }
   };
+
+
+const { isLoggedIn } = useAuth();
+
+useEffect(() => {
+  if (isLoggedIn) {
+    navigate("/");
+  }
+}, [isLoggedIn]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

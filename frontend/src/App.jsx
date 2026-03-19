@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Nav";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -8,10 +9,32 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/contact" element={<h1>Contact</h1>} />
-        <Route path="/about" element={<h1>About</h1>} />
         <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <h1>Home</h1>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <h1>Contact</h1>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <h1>About</h1>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

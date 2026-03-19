@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // ✅ LOGIN
   const login = async (email, password) => {
     try {
       const { data } = await axios.post(
@@ -32,7 +31,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ REGISTER
   const register = async (name, email, password) => {
     try {
       const { data } = await axios.post(
@@ -54,7 +52,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ LOGOUT
   const logout = async () => {
     try {
       await axios.post(`${backendUrl}/api/user/logout`);
@@ -64,7 +61,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ Auto login (refresh fix)
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -89,5 +85,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// ✅ Hook
 export const useAuth = () => useContext(AuthContext);
